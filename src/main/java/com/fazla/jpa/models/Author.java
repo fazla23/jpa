@@ -1,23 +1,23 @@
 package com.fazla.jpa.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Data // This provides getter(), setter(), toString(), hashCode(), Equals, constructor with final fields
 @NoArgsConstructor
 @Entity  // This tells to create Author Entity in the Database
 //@Table(name = "AUTHOR_TBL")
-public class Author {
-    @Id
-    @GeneratedValue
+public class Author extends BaseEntity{
+//    @Id
+//    @GeneratedValue
     // Table Generation generation
             /*(
                     strategy = GenerationType.TABLE,
@@ -42,7 +42,7 @@ public class Author {
             allocationSize = 1,
             initialValue = 150
     )*/
-    private Integer id;
+//    private Integer id;
 //    @Column(
 //            name = "f_name",
 //            length = 50
@@ -50,12 +50,16 @@ public class Author {
     private String firstName;
     private String lastName;
 
-//    @Column(
-//            unique = true,
-//            nullable = false
-//    )
+    @Column(
+            unique = true,
+            nullable = false
+    )
     private String email;
     private int age;
+
+    @ManyToMany(mappedBy = "authors")
+    private List<Course> courses;
+
 //    @Column(
 //            updatable = false,
 //            nullable = false
