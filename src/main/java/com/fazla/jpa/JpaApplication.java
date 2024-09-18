@@ -29,11 +29,11 @@ public class JpaApplication {
 //					.email("abc@gmail.com")
 //					.build();
 //			authorRepository.save(author);
-			Video video = Video.builder()
-					.length(5)
-					.name("abc")
-					.build();
-			videoRepository.save(video);
+//			Video video = Video.builder()
+//					.length(5)
+//					.name("abc")
+//					.build();
+//			videoRepository.save(video);
 		};
 	}
 
