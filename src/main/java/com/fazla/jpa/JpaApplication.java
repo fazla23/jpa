@@ -28,11 +28,11 @@ public class JpaApplication {
 		VideoRepository videoRepository
 	){
 		return args -> {
-			Specification<Author> spec = Specification.
-					where(AuthorSpecification.hasAge(32))
-					.and(AuthorSpecification.firstNameLike("%La%"));
-
-			authorRepository.findAll(spec).forEach(System.out::println);
+//			Specification<Author> spec = Specification.
+//					where(AuthorSpecification.hasAge(32))
+//					.and(AuthorSpecification.firstNameLike("%La%"));
+//
+//			authorRepository.findAll(spec).forEach(System.out::println);
 
 //			Author author = Author.builder()
 //					.id(1)
@@ -53,16 +53,16 @@ public class JpaApplication {
 //			authorRepository.updateByNamedQuery(67);
 
 
-//			Faker faker = new Faker();
-//			for (int i=0;i<50;i++){
-//				Author author = Author.builder()
-//					.firstName(faker.name().firstName())
-//					.lastName(faker.name().lastName())
-//					.age(faker.number().numberBetween(19,100))
-//					.email("abc"+ i +"@gmail.com")
-//					.build();
-//				authorRepository.save(author);
-//			}
+			Faker faker = new Faker();
+			for (int i=0;i<10;i++){
+				Author author = Author.builder()
+					.firstName(faker.name().firstName())
+					.lastName(faker.name().lastName())
+					.age(faker.number().numberBetween(19,100))
+					.email("abc"+ i +"@gmail.com")
+					.build();
+				authorRepository.save(author);
+			}
 
 //			Author author = Author.builder()
 //					.firstName("fazla")
