@@ -23,14 +23,17 @@ public class JpaApplication {
 		VideoRepository videoRepository
 	){
 		return args -> {
-			Author author = Author.builder()
-					.id(1)
-					.firstName("fazla")
-					.lastName("rabbi")
-					.age(26)
-					.email("abc@gmail.com")
-					.build();
-			authorRepository.save(author);
+//			Author author = Author.builder()
+//					.id(1)
+//					.firstName("fazla")
+//					.lastName("rabbi")
+//					.age(26)
+//					.email("abc@gmail.com")
+//					.build();
+//			authorRepository.save(author);
+
+//			authorRepository.updateAuthor(32,1);
+			authorRepository.updateAllAuthorsAges(52);
 
 
 //			Faker faker = new Faker();
