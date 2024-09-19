@@ -10,8 +10,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class JpaApplication {
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(JpaApplication.class, args);
@@ -33,7 +36,13 @@ public class JpaApplication {
 //			authorRepository.save(author);
 
 //			authorRepository.updateAuthor(32,1);
-			authorRepository.updateAllAuthorsAges(52);
+//			authorRepository.updateAllAuthorsAges(52);
+			//find by named query
+			List<Author> authors = authorRepository.findByNamedQuery(50);
+			System.out.println(authors);
+
+			//Update with named query
+			authorRepository.updateByNamedQuery(67);
 
 
 //			Faker faker = new Faker();

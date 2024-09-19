@@ -1,5 +1,6 @@
 package com.fazla.jpa.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -15,6 +16,27 @@ import java.util.List;
 @NoArgsConstructor
 @Entity  // This tells to create Author Entity in the Database
 //@Table(name = "AUTHOR_TBL")
+//@NamedQuery(
+//        name = "Author.findByNamedQuery",
+//        query = "select a from Author a where a.age>=:age"
+//)
+//@NamedQuery(
+//        name = "Author.updateByNamedQuery",
+//        query = "update Author a set a.age=:age"
+//)
+
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = "Author.findByNamedQuery",
+                        query = "select a from Author a where a.age>=:age"
+                ),
+                @NamedQuery(
+                        name = "Author.updateByNamedQuery",
+                        query = "update Author a set a.age=:age"
+                )
+        }
+)
 public class Author extends BaseEntity{
 //    @Id
 //    @GeneratedValue
@@ -57,7 +79,9 @@ public class Author extends BaseEntity{
     private String email;
     private int age;
 
-    @ManyToMany(mappedBy = "authors")
+
+    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Course> courses;
 
 //    @Column(
