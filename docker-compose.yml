@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres:/var/lib/postgres/data
+      - postgres:/var/lib/postgresql/data
     networks:
       - spring-boot-network
 
